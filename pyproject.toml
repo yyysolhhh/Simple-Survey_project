@@ -12,6 +12,9 @@ uvicorn = "^0.29.0"
 gunicorn = "^21.2.0"
 pydantic = "^2.6.4"
 pydantic-settings = "^2.2.1"
+tortoise-orm = {extras = ["asyncmy"], version = "^0.20.0"}
+aerich = "^0.7.2"
+cryptography = "^42.0.5"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -21,6 +24,12 @@ mypy = "^1.9.0"
 coverage = "^7.4.4"
 pytest = "^8.1.1"
 pytest-asyncio = "^0.23.6"
+
+
+[tool.aerich]
+tortoise_orm = "app.configs.database_settings.TORTOISE_ORM"
+location = "./migrations"
+src_folder = "./."
 
 [build-system]
 requires = ["poetry-core"]
