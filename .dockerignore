@@ -1,0 +1,14 @@
+__pycache__/
+.env/
+.venv/
+venv/
+migrations/
+.coverage
+.gitignore
+.git/
+README.md
+test.sh
+test_main.http
+.idea/
+.github/
+

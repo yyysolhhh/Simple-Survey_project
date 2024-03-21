@@ -1,18 +1,27 @@
 version: '3.8'
 
 services:
-  flaskapp:
+  db:
+    image: mysql:8.3.0
+    container_name: mysql830
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/conf.d:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+    env_file: .env
+    environment:
+      TZ: Asia/Seoul
+
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: flaskapp
+    container_name: app
     volumes:
-      - .:/app
-    environment:
-      - FLASK_APP=app:create_app
-      - FLASK_RUN_HOST=0.0.0.0
+      - ./app:/app
     expose:
-      - "5000"
+      - "8000"
 
 
   nginx:
@@ -23,4 +32,4 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - flaskapp
+      - app
