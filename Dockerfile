@@ -29,6 +29,7 @@ COPY . .
 
 
 # Entrypoint 스크립트 추가
-#COPY ./entrypoint.sh /app/entrypoint.sh
-#ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+COPY ./entrypoint.sh /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
+#CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]

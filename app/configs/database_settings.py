@@ -1,4 +1,4 @@
-from app.configs import settings
+from configs import settings
 
 TORTOISE_APP_MODELS = [
     "app.models.article",

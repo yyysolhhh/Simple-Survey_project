@@ -13,13 +13,13 @@ services:
     environment:
       TZ: Asia/Seoul
 
-  app:
+  fastapiapp:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: app
+    container_name: fastapiapp
     volumes:
-      - ./app:/app
+      - .:/app
     expose:
       - "8000"
 
@@ -32,4 +32,4 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
-      - app
+      - fastapiapp
