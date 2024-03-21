@@ -15,5 +15,5 @@ class Settings(BaseSettings):
     DB_HOST: str = os.getenv("DB_HOST", "localhost")
     DB_PORT: str = os.getenv("DB_PORT", "3306")
     DB_USER: str = os.getenv("DB_USER", "root")
-    DB_PASSWORD: str = os.getenv("DB_PASSWORD")
-    DB_DB: str = os.getenv("DB_DB")
+    DB_PASSWORD: str | None = os.getenv("DB_PASSWORD")
+    DB_DB: str | None = os.getenv("DB_DB")
