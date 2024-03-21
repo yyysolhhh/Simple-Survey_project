@@ -1,6 +1,5 @@
 from app.configs import settings
 
-
 TORTOISE_APP_MODELS = [
     "app.models.article",
     "app.models.comment",
