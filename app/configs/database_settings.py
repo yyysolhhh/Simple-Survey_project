@@ -1,8 +1,10 @@
-from configs import settings
+from app.configs import settings
 
 TORTOISE_APP_MODELS = [
-    "app.models.article",
-    "app.models.comment",
+    "app.models.admin",
+    "app.models.participant",
+    "app.models.answer",
+    "app.models.question",
     "aerich.models",
 ]
 
