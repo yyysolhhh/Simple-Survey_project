@@ -1,21 +1,18 @@
-# from models.participant import Participant
-
-# from dtos.participant import ParticipantResponse
-
 from tortoise import Tortoise
+from tortoise.backends.base.client import BaseDBAsyncClient
 
+from app import configs
 from app.configs.database_settings import TORTOISE_ORM
 from app.dtos.participant import ParticipantRequest
+from app.models.participant import Participant
 
 
-async def get_participant(data: ParticipantRequest) -> int:
+async def get_participant(data: ParticipantRequest, conn: BaseDBAsyncClient) -> int:
     # participant = Participant(**data.dict())
     # print("1", participant)
     # await participant.save()
 
-    await Tortoise.init(TORTOISE_ORM)
-
-    conn = Tortoise.get_connection("default")
+    # await Tortoise.init(TORTOISE_ORM)
     # participant = data.dict()
     sql = "INSERT INTO participants(name, age, gender) VALUES (%s, %s, %s)"
     participant_id: int = await conn.execute_insert(sql, [data.name, data.age, data.gender])
