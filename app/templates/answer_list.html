@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Quiz List</title>
+    <title>Answer List</title>
 </head>
 <body>
-    <h1>Quiz List</h1>
+    <h1>Answer List</h1>
     <a href="{{ url_for('admin.dashboard') }}">
         <button class="dashboard-button">Back to Dashboard</button>
     </a>
@@ -18,11 +18,11 @@
             </tr>
         </thead>
         <tbody>
-            {% for quiz in quizzes %}
+            {% for answer in quizzes %}
                 <tr>
-                    <td>{{ quiz.participant.name }}</td>
-                    <td>{{ quiz.question.content }}</td>
-                    <td>{{ quiz.chosen_answer }}</td>
+                    <td>{{ answer.participant.name }}</td>
+                    <td>{{ answer.question.content }}</td>
+                    <td>{{ answer.chosen_answer }}</td>
                 </tr>
             {% endfor %}
         </tbody>

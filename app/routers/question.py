@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Form, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
+from starlette.templating import _TemplateResponse
 
 from app.routers.welcome import templates
 
@@ -7,5 +8,9 @@ router = APIRouter()
 
 
 @router.get("", response_class=HTMLResponse)
-def answer(request: Request) -> HTMLResponse:
-    return templates.TemplateResponse(request=request, name="quiz.html")
+def answer(request: Request):
+    participant_id = request.cookies.get("participant_id")
+    if not participant_id:
+        return RedirectResponse("/", status_code=302)
+
+    return templates.TemplateResponse(request=request, name="question.html")
