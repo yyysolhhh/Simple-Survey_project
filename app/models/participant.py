@@ -3,7 +3,7 @@ from __future__ import annotations
 from tortoise import fields
 from tortoise.models import Model
 
-from app.models.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Participant(BaseModel, Model):
