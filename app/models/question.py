@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from typing import List
+
 from tortoise import fields
 from tortoise.models import Model
 
@@ -13,5 +17,5 @@ class Question(BaseModel, Model):
         table = "questions"
 
     @classmethod
-    async def get_all_questions(cls):
+    async def get_all_questions(cls) -> list[Question]:
         return await cls.all()
