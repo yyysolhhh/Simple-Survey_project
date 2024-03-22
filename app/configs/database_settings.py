@@ -1,6 +1,7 @@
 from typing import Coroutine
 
-from tortoise import Tortoise, BaseDBAsyncClient
+from tortoise import Tortoise
+from tortoise.backends.base.client import BaseDBAsyncClient
 
 from app.configs import settings
 

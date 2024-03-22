@@ -1,4 +1,5 @@
 from tortoise import Tortoise
+from tortoise.backends.base.client import BaseDBAsyncClient
 
 from app import configs
 from app.configs.database_settings import TORTOISE_ORM
@@ -6,7 +7,7 @@ from app.dtos.participant import ParticipantRequest
 from app.models.participant import Participant
 
 
-async def get_participant(data: ParticipantRequest, conn):
+async def get_participant(data: ParticipantRequest, conn: BaseDBAsyncClient) -> int:
     # participant = Participant(**data.dict())
     # print("1", participant)
     # await participant.save()
