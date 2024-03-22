@@ -1,11 +1,13 @@
 from fastapi import Request, APIRouter
 from fastapi.responses import HTMLResponse
 
-from routers.welcome import templates
-from services.participant import get_participant
-from dtos.participant import ParticipantResponse
+from app.routers.welcome import templates
+from app.services.participant import get_participant
+from app.dtos.participant import ParticipantResponse
 
-from models.participant import Participant
+from app.models.participant import Participant
+
+from app.dtos.participant import ParticipantRequest
 
 # import templates
 # from fastapi.templating import Jinja2Templates
@@ -21,9 +23,10 @@ def get_form(request: Request) -> HTMLResponse:
 
 
 @router.post("")
-async def submit_form(data: ParticipantResponse):
-    await get_participant(name=data.name, age=data.age, gender=data.gender)
-    return {"redirect": "/questions", "participant_id": 1}  # debug url_for
+async def submit_form(data: ParticipantRequest):
+    # await get_participant(name=data.name, age=data.age, gender=data.gender)
+    participant = await get_participant(data)
+    return {"redirect": "/questions", "participant_id": participant}  # debug url_for
 
 
 # @router.post("")

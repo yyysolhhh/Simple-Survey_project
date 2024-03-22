@@ -1,3 +1,5 @@
+from tortoise import Tortoise
+
 from app.configs import settings
 
 TORTOISE_APP_MODELS = [
