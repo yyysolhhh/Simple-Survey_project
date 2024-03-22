@@ -431,6 +431,7 @@ migrations
 mysql/
 ignore/
 .vscode/
+*/alembic/versions
 
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,pycharm,flask,vim
