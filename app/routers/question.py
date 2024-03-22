@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Form, Request
+from fastapi import APIRouter, Form, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.templating import _TemplateResponse
 
@@ -8,7 +8,7 @@ router = APIRouter()
 
 
 @router.get("", response_class=HTMLResponse)
-def answer(request: Request):
+def answer(request: Request) -> Response:
     participant_id = request.cookies.get("participant_id")
     if not participant_id:
         return RedirectResponse("/", status_code=302)
