@@ -5,13 +5,15 @@ services:
     image: mysql:8.3.0
     container_name: mysql830
     ports:
-      - "3306:3306"
+      - "33306:3306"
     volumes:
       - ./mysql/conf.d:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
     env_file: .env
     environment:
-      TZ: Asia/Seoul
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - TZ=Asia/Seoul
+
 
   fastapiapp:
     build:
