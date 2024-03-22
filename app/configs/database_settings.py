@@ -1,4 +1,6 @@
-from tortoise import Tortoise
+from typing import Coroutine
+
+from tortoise import Tortoise, BaseDBAsyncClient
 
 from app.configs import settings
 
@@ -32,3 +34,8 @@ TORTOISE_ORM = {
     # "routers": ["app.configs.database_config.Router"],
     "timezone": "Asia/Seoul",
 }
+
+
+async def connect_db() -> BaseDBAsyncClient:
+    await Tortoise.init(TORTOISE_ORM)
+    return Tortoise.get_connection("default")
