@@ -1,6 +1,5 @@
-from fastapi import APIRouter, Form, Request, Response
+from fastapi import APIRouter, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
-from starlette.templating import _TemplateResponse
 
 from app.routers.welcome import templates
 
