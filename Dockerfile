@@ -20,7 +20,10 @@ RUN poetry config virtualenvs.create false \
   && poetry install --no-dev --no-interaction --no-ansi
 
 # 애플리케이션 복사
-COPY . .
+COPY ./app ./app
+COPY .env ./
+RUN export $(cat .env | xargs)
+
 
 # Flask 애플리케이션 실행을 위한 환경 변수 설정
 #ENV FLASK_APP=app:create_app

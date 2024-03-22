@@ -12,7 +12,8 @@ class Env(StrEnum):
 
 class Settings(BaseSettings):
     ENV: Env = Env.LOCAL
-    DB_HOST: str = os.getenv("DB_HOST", "localhost")
+    DB_HOST: str = os.getenv("DB_HOST", "db")
+    # DB_HOST: str = os.getenv("DB_HOST", "localhost")
     DB_PORT: str = os.getenv("DB_PORT", "3306")
     DB_USER: str = os.getenv("DB_USER", "root")
     DB_PASSWORD: str | None = os.getenv("DB_PASSWORD")

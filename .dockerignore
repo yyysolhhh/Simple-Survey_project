@@ -1,8 +1,7 @@
+.dockerignore
 __pycache__/
-.env/
 .venv/
 venv/
-.env
 .idea/
 .DS_Store/
 .gitignore
