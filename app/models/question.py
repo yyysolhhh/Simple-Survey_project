@@ -8,3 +8,6 @@ class Question(BaseModel, Model):
     order = fields.IntField()
     is_active = fields.BooleanField(default=True)
     content = fields.TextField()
+
+    class Meta:
+        table = "questions"

@@ -14,3 +14,6 @@ class Answer(BaseModel, Model):
         "models.Question", related_name="answers", db_constraint=False
     )
     choice = fields.BooleanField()
+
+    class Meta:
+        table = "answers"
