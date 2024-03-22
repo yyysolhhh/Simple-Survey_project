@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from tortoise.backends.base.client import BaseDBAsyncClient
 
 from app.configs.database_settings import connect_db
-from app.dtos.participant import ParticipantRequest, ParticipantResponse
+from app.dtos.participant import ParticipantRequest
 from app.routers.welcome import templates
 from app.services.participant import get_participant
 

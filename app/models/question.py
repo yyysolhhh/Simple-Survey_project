@@ -11,3 +11,7 @@ class Question(BaseModel, Model):
 
     class Meta:
         table = "questions"
+
+    @classmethod
+    async def get_all_questions(cls):
+        return await cls.all()
