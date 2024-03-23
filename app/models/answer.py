@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from tortoise import fields
 from tortoise.backends.base.client import BaseDBAsyncClient
 from tortoise.models import Model
@@ -18,6 +20,10 @@ class Answer(BaseModel, Model):
 
     class Meta:
         table = "answers"
+
+    @classmethod
+    async def get_all_answers(cls) -> list[Answer]:
+        return await cls.all()
 
     @classmethod
     async def save_answer(
