@@ -1,5 +1,7 @@
+from fastapi import Depends
 from tortoise.backends.base.client import BaseDBAsyncClient
 
+from app.configs.database_settings import connect_db
 from app.dtos.participant import ParticipantRequest
 
 
