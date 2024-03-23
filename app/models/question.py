@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from typing import List
+
 from tortoise import fields
 from tortoise.models import Model
 
@@ -11,3 +15,11 @@ class Question(BaseModel, Model):
 
     class Meta:
         table = "questions"
+
+    @classmethod
+    async def get_all_questions(cls) -> list[Question]:
+        return await cls.all()
+
+    @classmethod
+    async def get_all_active_questions(cls) -> list[Question]:
+        return await cls.filter(is_active=True).order_by("order").all()

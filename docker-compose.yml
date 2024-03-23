@@ -9,9 +9,9 @@ services:
     volumes:
       - ./mysql/conf.d:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
-    env_file: .env
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
       - TZ=Asia/Seoul
 
 
@@ -20,8 +20,12 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: fastapiapp
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=${MYSQL_HOST}
     volumes:
-      - .:/app
+      - ./app:/app/app
     expose:
       - "8000"
 
