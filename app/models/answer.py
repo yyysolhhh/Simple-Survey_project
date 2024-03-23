@@ -1,4 +1,5 @@
 from tortoise import fields
+from tortoise.backends.base.client import BaseDBAsyncClient
 from tortoise.models import Model
 
 from app.models.base_model import BaseModel
@@ -17,3 +18,11 @@ class Answer(BaseModel, Model):
 
     class Meta:
         table = "answers"
+
+    @classmethod
+    async def save_answer(
+        cls, conn: BaseDBAsyncClient, participant_id: str, question_id: int | None, choice: str | None
+    ) -> None:
+        # sql = "INSERT INTO answers (participant_id, question_id, choice)"
+        new_answer = Answer(participant_id_id=participant_id, question_id_id=question_id, choice=choice)
+        await new_answer.save()

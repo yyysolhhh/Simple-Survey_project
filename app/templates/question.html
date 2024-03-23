@@ -82,18 +82,18 @@
         });
 
         async function sendResult() {
-            const quizzes = questions_list.map((question, index) => ({
+            const answers = questions_list.map((question, index) => ({
                 question_id: question.id,
-                chosen_answer: userAnswers[index]
+                choice: userAnswers[index]
             }));
 
             try {
-                const response = await fetch("/submit", {
+                const response = await fetch("/answers", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ quizzes })
+                    body: JSON.stringify({ answers })
                 });
 
                 if (!response.ok) throw new Error("서버 응답 실패");
