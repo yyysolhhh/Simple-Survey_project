@@ -4,7 +4,7 @@ from app.dtos.participant import ParticipantRequest
 
 
 async def get_participant(data: ParticipantRequest, conn: BaseDBAsyncClient) -> int:
-    sql = "INSERT INTO participants(name, age, gender) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO participants(name, age, gender) VALUES (%s, %s, %s)"  # debug
     participant_id: int = await conn.execute_insert(sql, [data.name, data.age, data.gender])
     return participant_id
 

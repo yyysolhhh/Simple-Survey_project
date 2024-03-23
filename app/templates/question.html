@@ -36,11 +36,11 @@
 
     <script>
         async function fetchQuestions() {
-            const response = await fetch('/questions');
-            console.log(response)
+            const response = await fetch('/questions/list');
             const data = await response.json();
             console.log(data)
-            return data.questions; // 수정됨: 질문 데이터 배열 반환
+            return data; // 수정됨: 질문 데이터 배열 반환
+            {#return data.questions; // 수정됨: 질문 데이터 배열 반환#}
         }
 
         const questionElement = document.getElementById("question");

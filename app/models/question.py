@@ -19,3 +19,7 @@ class Question(BaseModel, Model):
     @classmethod
     async def get_all_questions(cls) -> list[Question]:
         return await cls.all()
+
+    @classmethod
+    async def get_all_active_questions(cls) -> list[Question]:
+        return await cls.filter(is_active=True).order_by("order").all()
