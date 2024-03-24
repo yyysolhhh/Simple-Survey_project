@@ -36,7 +36,7 @@
 
     <script>
         async function fetchQuestions() {
-            const response = await fetch('/questions/list');
+            const response = await fetch('/api/v1/questions/list');
             const data = await response.json();
             console.log(data)
             return data; // 수정됨: 질문 데이터 배열 반환
@@ -88,7 +88,7 @@
             }));
 
             try {
-                const response = await fetch("/answers", {
+                const response = await fetch("/api/v1/answers", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -99,7 +99,7 @@
                 if (!response.ok) throw new Error("서버 응답 실패");
                 console.log("결과 전송 완료");
                 // 성공적으로 제출 후, 결과 페이지로 이동하거나 다른 액션을 수행할 수 있습니다.
-                window.location.href = "/results"
+                window.location.href = "/api/v1/results"
 
             } catch (error) {
                 console.error("오류 발생:", error);

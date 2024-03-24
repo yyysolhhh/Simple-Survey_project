@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from tortoise.backends.base.client import BaseDBAsyncClient
 
+# from app import app
 from app.configs.constants import TEMPLATES
 from app.configs.database_settings import connect_db
 from app.dtos.participant import ParticipantRequest
@@ -21,7 +22,9 @@ def get_form(request: Request) -> HTMLResponse:
 
 
 @router.post("")
-async def submit_form(data: ParticipantRequest, conn: BaseDBAsyncClient = Depends(connect_db)) -> dict[str, Any]:
+async def submit_form(request: Request, data: ParticipantRequest, conn: BaseDBAsyncClient = Depends(connect_db)) -> dict[str, Any]:
     # participant_id = await Participant.create(name=data.name, age=data.age, gender=data.gender)
     participant_id = await get_participant(data, conn)
-    return {"redirect": "/questions", "participant_id": participant_id}  # debug url_for
+    return {"redirect": "/api/v1/questions", "participant_id": participant_id}  # debug url_for
+    # return {"redirect": router.url_path_for("routers.question.answer"), "participant_id": participant_id}  # debug url_for
+    # return {"redirect": request.url_for("answer"), "participant_id": participant_id}  # debug url_for
