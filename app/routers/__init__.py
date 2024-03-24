@@ -1,6 +1,6 @@
-from app.routers import answer, participant, question, result, welcome
-
 from fastapi import APIRouter
+
+from app.routers import answer, participant, question, result, welcome
 
 api_router = APIRouter()
 api_router.include_router(welcome.router, prefix="", tags=["Welcome"])

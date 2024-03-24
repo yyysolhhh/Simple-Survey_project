@@ -5,5 +5,5 @@ from app.models.participant import Participant
 
 
 async def get_participant(data: ParticipantRequest, conn: BaseDBAsyncClient) -> int:
-    participant_id = await Participant.insert_participant(conn, data)
+    participant_id: int = await Participant.insert_participant(conn, data)
     return participant_id
