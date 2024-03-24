@@ -1,0 +1,1 @@
+TEMPLATES = "app/templates"

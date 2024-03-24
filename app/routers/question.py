@@ -5,11 +5,12 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 from starlette.responses import JSONResponse
 
+from app.configs.constants import TEMPLATES
 from app.services.question import get_active_questions, get_questions
 
 
 router = APIRouter()
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory=TEMPLATES)
 
 
 @router.get("", response_class=HTMLResponse)

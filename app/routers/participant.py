@@ -4,13 +4,14 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.responses import HTMLResponse
 from tortoise.backends.base.client import BaseDBAsyncClient
 
+from app.configs.constants import TEMPLATES
 from app.configs.database_settings import connect_db
 from app.dtos.participant import ParticipantRequest
 from app.services.participant import get_participant
 
 from fastapi.templating import Jinja2Templates
 
-templates = Jinja2Templates(directory="app/templates")
+templates = Jinja2Templates(directory=TEMPLATES)
 
 router = APIRouter()
 
