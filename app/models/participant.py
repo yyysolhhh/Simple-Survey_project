@@ -17,3 +17,7 @@ class Participant(BaseModel, Model):
     @classmethod
     async def get_one_by_id(cls, id: int) -> Participant:
         return await cls.get(id=id)
+
+    @classmethod
+    async def get_all_participants(cls) -> list[Participant]:
+        return await cls.all()
