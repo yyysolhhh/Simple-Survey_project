@@ -75,4 +75,6 @@ jobs:
       - name: Check out
         uses: actions/checkout@v2
       - name: Lint
-        run: docker-compose run --rm fastapiapp sh -c "poetry run black . --check && poetry run isort . --check --diff && poetry run mypy ."
+        run: |
+          touch .env
+          docker-compose run --rm fastapiapp sh -c "poetry run black . --check && poetry run isort . --check --diff && poetry run mypy ."
