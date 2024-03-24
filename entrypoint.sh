@@ -4,7 +4,7 @@
 #flask init-db
 #aerich init
 #aerich init -t app.configs.database_settings.TORTOISE_ORM
-#aerich init-db
+aerich init-db
 #aerich migrate
 #aerich update
 

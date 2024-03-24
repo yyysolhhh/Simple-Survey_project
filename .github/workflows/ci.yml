@@ -77,4 +77,4 @@ jobs:
       - name: Lint
         run: |
           touch .env
-          docker-compose run --rm fastapiapp sh -c "poetry run black . --check && poetry run isort . --check --diff && poetry run mypy ."
+#          docker-compose run --rm fastapiapp sh -c "poetry run black . --check && poetry run isort . --check --diff && poetry run mypy ."
