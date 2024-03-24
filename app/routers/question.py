@@ -2,12 +2,14 @@ from typing import Any
 
 from fastapi import APIRouter, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
 from starlette.responses import JSONResponse
 
-from app.routers.welcome import templates
 from app.services.question import get_active_questions, get_questions
 
+
 router = APIRouter()
+templates = Jinja2Templates(directory="app/templates")
 
 
 @router.get("", response_class=HTMLResponse)

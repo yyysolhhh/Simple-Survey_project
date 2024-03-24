@@ -3,11 +3,13 @@ from typing import Any
 from fastapi import APIRouter, Request, Response
 from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.responses import JSONResponse
+from fastapi.templating import Jinja2Templates
 
-from app.routers.welcome import templates
 from app.services.result import get_result_graphs
 
+
 router = APIRouter()
+templates = Jinja2Templates(directory="app/templates")
 
 
 @router.get("", response_class=HTMLResponse)

@@ -6,13 +6,11 @@ from tortoise.backends.base.client import BaseDBAsyncClient
 
 from app.configs.database_settings import connect_db
 from app.dtos.participant import ParticipantRequest
-from app.routers.welcome import templates
 from app.services.participant import get_participant
 
-# import templates
-# from fastapi.templating import Jinja2Templates
-#
-# templates = Jinja2Templates(directory="app/templates")
+from fastapi.templating import Jinja2Templates
+
+templates = Jinja2Templates(directory="app/templates")
 
 router = APIRouter()
 
