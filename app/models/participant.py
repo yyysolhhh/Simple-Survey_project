@@ -21,3 +21,9 @@ class Participant(BaseModel, Model):
     @classmethod
     async def get_all_participants(cls) -> list[Participant]:
         return await cls.all()
+
+    @classmethod
+    async def insert_participant(cls, conn, data):
+        sql = "INSERT INTO participants(name, age, gender) VALUES (%s, %s, %s)"  # debug
+        participant_id: int = await conn.execute_insert(sql, [data.name, data.age, data.gender])
+        return participant_id

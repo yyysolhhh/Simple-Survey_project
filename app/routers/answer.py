@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Request
-from starlette.responses import JSONResponse, RedirectResponse
+from starlette.responses import JSONResponse
 from tortoise.backends.base.client import BaseDBAsyncClient
 
 from app.configs.database_settings import connect_db

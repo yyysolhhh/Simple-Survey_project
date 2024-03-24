@@ -1,13 +1,11 @@
 from typing import Any
 
-from fastapi import APIRouter, Request, Response
-from fastapi.responses import HTMLResponse, RedirectResponse
-from starlette.responses import JSONResponse
+from fastapi import APIRouter, Request
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from app.configs.constants import TEMPLATES
 from app.services.result import get_result_graphs
-
 
 router = APIRouter()
 templates = Jinja2Templates(directory=TEMPLATES)
