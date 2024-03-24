@@ -65,6 +65,12 @@ jobs:
   docker:
     name: docker test
     runs-on: ubuntu-20.04
+    env:
+      MYSQL_HOST: db
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: db
     steps:
       - name: Check out
         uses: actions/checkout@v2
