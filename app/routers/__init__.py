@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.routers import answer, participant, question, welcome, result
+from app.routers import answer, participant, question, result, welcome
 
 # from fastapi.templating import Jinja2Templates
 #

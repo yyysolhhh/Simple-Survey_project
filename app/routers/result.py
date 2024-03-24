@@ -11,6 +11,6 @@ router = APIRouter()
 
 
 @router.get("", response_class=HTMLResponse)
-async def show_results() -> Any:
-    graphs_json = get_result_graphs()
-    return templates.TemplateResponse("results.html", context={"graphs_json": graphs_json})
+async def show_results(request: Request) -> Any:
+    graphs_json = await get_result_graphs()
+    return templates.TemplateResponse(request=request, name="results.html", context={"graphs_json": graphs_json})
