@@ -61,3 +61,12 @@ jobs:
 #          poetry run coverage run -m pytest
 #          poetry run coverage report -m
 #          poetry run coverage html
+
+  docker:
+    name: docker test
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Lint
+        run: docker-compose run --rm fastapiapp sh -c "poetry run black . --check && poetry run isort . --check --diff && poetry run mypy ."
