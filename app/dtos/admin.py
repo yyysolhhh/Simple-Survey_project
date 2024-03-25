@@ -16,5 +16,3 @@ class Admin(BaseModel):
 
 class AdminInDB(Admin):
     password: str
-
-

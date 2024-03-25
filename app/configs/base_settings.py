@@ -20,8 +20,7 @@ class Settings(BaseSettings):
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str | None = os.getenv("SECRET_KEY")
     ALGORITHM: str | None = os.getenv("ALGORITHM")
-    ACCESS_TOKEN_EXPIRE_MINUTES: int | None = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+    ACCESS_TOKEN_EXPIRE_MINUTES: str | None = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
 
     class Config:
         extra = "ignore"
-

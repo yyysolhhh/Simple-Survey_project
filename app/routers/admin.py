@@ -1,6 +1,6 @@
-from typing import Annotated
+from typing import Annotated, Any
 
-from fastapi import APIRouter, Depends, Request, Form, HTTPException, status
+from fastapi import APIRouter, Depends, Form, HTTPException, Request, status
 from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.templating import Jinja2Templates
@@ -19,12 +19,12 @@ templates = Jinja2Templates(directory=TEMPLATES)
 
 
 @router.get("/signup")
-def get_signup_page(request: Request):
+def get_signup_page(request: Request) -> Any:
     return templates.TemplateResponse(request=request, name="signup.html")
 
 
 @router.post("/signup")
-async def signup(new_admin: AdminInDB, conn: BaseDBAsyncClient = Depends(connect_db)):
+async def signup(new_admin: AdminInDB, conn: BaseDBAsyncClient = Depends(connect_db)) -> HTTPException:
     # admin = Admin.get_admin(new_admin.username)
     # print(admin.username)
     # if admin:
@@ -34,7 +34,7 @@ async def signup(new_admin: AdminInDB, conn: BaseDBAsyncClient = Depends(connect
 
 
 @router.get("/login")
-def get_login_page(request: Request):
+def get_login_page(request: Request) -> Any:
     return templates.TemplateResponse(request=request, name="admin.html")
 
 
@@ -43,10 +43,8 @@ def get_login_page(request: Request):
 #     admin = Admin.get_admin(username)
 
 
-
-
 @router.get("/dashboard", response_class=HTMLResponse)
-def get_dashboard_page(request: Request):
+def get_dashboard_page(request: Request) -> None:
     pass
     # graph_div =
     # return templates.TemplateResponse(request=request, name="dashboard.html", context={"graph_div": graph_div})

@@ -1526,6 +1526,17 @@ docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,<8.1)", "pytest-mock", "pytest-mypy-testing"]
 
 [[package]]
+name = "types-passlib"
+version = "1.7.7.20240311"
+description = "Typing stubs for passlib"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-passlib-1.7.7.20240311.tar.gz", hash = "sha256:287dd27cec5421daf6be5c295f681baf343c146038c8bde4db783bcac1beccb7"},
+    {file = "types_passlib-1.7.7.20240311-py3-none-any.whl", hash = "sha256:cd44166e9347ae516f4830046cd1673c1ef90a5cc7ddd1356cf8a14892f29249"},
+]
+
+[[package]]
 name = "types-pytz"
 version = "2024.1.0.20240203"
 description = "Typing stubs for pytz"
@@ -1607,4 +1618,4 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "71b575ab4a2e110ae3058736eba92cdd9ea1942107e9cd8aba98b8b0c16b8ae8"
+content-hash = "4ded544f46cfbf89bc97b76c4cf1fd9a39d1b1ab374401e441198ce0ef42e35c"
