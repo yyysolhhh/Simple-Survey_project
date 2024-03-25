@@ -34,10 +34,6 @@ class Answer(BaseModel, Model):
         new_answer = Answer(participant_id=participant_id, question_id=question_id, choice=choice)
         await new_answer.save()
 
-    # @classmethod
-    # async def get_participant_age(cls) -> int:
-    #     participant_age = await cls.participant_id.age
-
     @classmethod
     async def get_answers_join_questions(cls) -> list[Answer]:
         return await cls.filter().select_related("question").all()

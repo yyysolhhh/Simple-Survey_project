@@ -23,5 +23,5 @@ class Question(BaseModel, Model):
         return await cls.filter(is_active=True).order_by("order").all()
 
     @classmethod
-    async def get_question_by_id(cls, question_id: int) -> Question:
+    async def get_question_by_id(cls, question_id: int) -> Question | None:
         return await cls.filter(id=question_id).first()
