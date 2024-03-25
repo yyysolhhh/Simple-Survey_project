@@ -27,5 +27,5 @@ async def submit_form(
     # participant_id = await Participant.create(name=data.name, age=data.age, gender=data.gender)
     participant_id = await get_participant(data, conn)
     return {"redirect": "/api/v1/questions", "participant_id": participant_id}  # debug url_for
-    # return {"redirect": router.url_path_for("routers.question.answer"), "participant_id": participant_id}  # debug url_for
+    # return {"redirect": router.url_path_for("question.answer"), "participant_id": participant_id}  # debug url_for
     # return {"redirect": request.url_for("answer"), "participant_id": participant_id}  # debug url_for
