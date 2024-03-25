@@ -19,7 +19,7 @@ async def extract_participants_to_dataframe() -> pd.DataFrame:
 async def extract_answers_to_dataframe() -> pd.DataFrame:
     answers_list = await Answer.get_answers_join_questions()
     answers_data = [
-        {"question_id": answer.question.id, "choice": answer.choice, "question_content": answer.question.content}
+        {"question_id": answer.question.order, "choice": answer.choice, "question_content": answer.question.content}
         for answer in answers_list
     ]
     answers_df = pd.DataFrame(answers_data)

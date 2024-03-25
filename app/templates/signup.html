@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입 페이지</title>
+  </head>
+  <body>
+    <h2>회원가입</h2>
+    <form onsubmit="signup(event)">
+      <label for="username">사용자 이름:</label><br />
+      <input type="text" id="username" name="username" required /><br />
+      <label for="password">비밀번호:</label><br />
+      <input type="password" id="password" name="password" required /><br /><br />
+      <input type="submit" value="가입하기" />
+    </form>
+    <script>
+      async function signup(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const data = {
+          username: formData.get("username"),
+          password: formData.get("password"),
+        };
+        const response = await fetch("/api/v1/admin/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        if (response.ok) {
+          alert("회원가입 성공!");
+          // 성공 시 로그인 페이지나 홈으로 리다이렉트
+          window.location.href = "/api/v1/admin/login";
+        } else {
+          alert("중복 이름. 다시 시도해주세요.");
+        }
+      }
+    </script>
+  </body>
+</html>

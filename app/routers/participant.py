@@ -11,9 +11,8 @@ from app.configs.database_settings import connect_db
 from app.dtos.participant import ParticipantRequest
 from app.services.participant import get_participant
 
-templates = Jinja2Templates(directory=TEMPLATES)
-
 router = APIRouter()
+templates = Jinja2Templates(directory=TEMPLATES)
 
 
 @router.get("", response_class=HTMLResponse)
