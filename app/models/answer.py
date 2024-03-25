@@ -29,7 +29,6 @@ class Answer(BaseModel, Model):
     async def save_answer(
         cls, conn: BaseDBAsyncClient, participant_id: str, question_id: int | None, choice: str | None
     ) -> None:
-        # sql = "INSERT INTO answers (participant_id, question_id, choice)"
         new_answer = Answer(participant_id=participant_id, question_id=question_id, choice=choice)
         await new_answer.save()
 

@@ -24,15 +24,6 @@ COPY ./app ./app
 COPY .env ./
 RUN export $(cat .env | xargs)
 
-
-# Flask 애플리케이션 실행을 위한 환경 변수 설정
-#ENV FLASK_APP=app:create_app
-#ENV FLASK_RUN_HOST=0.0.0.0
-#ENV FLASK_RUN_PORT=5000
-
-
 # Entrypoint 스크립트 추가
 COPY ./entrypoint.sh /app/entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]
-#CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
-#CMD ["uvicorn", "main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "80"]
