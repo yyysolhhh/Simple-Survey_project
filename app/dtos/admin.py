@@ -13,7 +13,8 @@ class TokenData(BaseModel):
 class Admin(BaseModel):
     username: str
 
+
 class AdminInDB(Admin):
-    hashed_password: str
+    password: str
 
 
