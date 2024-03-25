@@ -24,13 +24,12 @@ def get_signup_page(request: Request) -> Any:
 
 
 @router.post("/signup")
-async def signup(new_admin: AdminInDB, conn: BaseDBAsyncClient = Depends(connect_db)) -> HTTPException:
+async def signup(new_admin: AdminInDB, conn: BaseDBAsyncClient = Depends(connect_db)) -> None:
     # admin = Admin.get_admin(new_admin.username)
     # print(admin.username)
     # if admin:
     #     raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Admin User already exists")
     await create_new_admin(new_admin, conn)
-    return HTTPException(status_code=status.HTTP_200_OK)
 
 
 @router.get("/login")
