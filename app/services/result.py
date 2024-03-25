@@ -22,6 +22,7 @@ async def extract_answers_to_dataframe() -> pd.DataFrame:
         {
             "question_id": answer.question.id,
             "choice": answer.choice,
+            "question_content": answer.question.content
         }
         for answer in answers_list
     ]
@@ -36,8 +37,8 @@ def create_age_distribution_graph(participants_df: pd.DataFrame) -> Figure:
         title="Age Distribution",
         hole=0.3,
         labels={"age": "Age"},
-        # color_discrete_sequence=px.colors.qualitative.Plotly,
-        color_discrete_sequence=px.colors.sequential.Turbo,
+        color_discrete_sequence=px.colors.qualitative.T10,
+        # color_discrete_sequence=px.colors.sequential.Agsunset,
     )
 
 
@@ -48,19 +49,21 @@ def create_gender_distribution_graph(participants_df: pd.DataFrame) -> Figure:
         title="Gender Distribution",
         hole=0.3,
         labels={"gender": "Gender"},
-        color_discrete_sequence=px.colors.qualitative.Plotly,
+        color_discrete_sequence=px.colors.qualitative.T10,
         # color_discrete_sequence=px.colors.sequential.Plasma_r,
+        # color_discrete_sequence=px.colors.sequential.Agsunset,
     )
 
 
-def create_one_answers_graph(answers_df: pd.DataFrame, number: int) -> Figure:
+def create_one_answers_graph(answers_df: pd.DataFrame, number: int, content: str) -> Figure:
     fig = px.pie(
         answers_df,
         names="choice",
-        title=f"Question{number}",
+        title=f"Q{number} {content}",
         hole=0.3,
         labels={"choice": "Choice"},
-        color_discrete_sequence=px.colors.qualitative.Plotly,
+        color_discrete_map={"yes": "#4C78A8", "no": "#E45756"}
+        # color_discrete_sequence=px.colors.qualitative.T10,
         # color_discrete_sequence=px.colors.sequential.Plasma_r,
     )
     return fig
@@ -70,7 +73,8 @@ def create_answers_graphs(answers_df: pd.DataFrame) -> dict[str, Figure]:
     answers_graphs = {}
     for question_id in answers_df.question_id.unique():
         filtered_df = answers_df[answers_df["question_id"] == question_id]
-        answers_graphs[f"questions_{question_id}"] = create_one_answers_graph(filtered_df, question_id)
+        content = filtered_df.question_content.unique()[0]
+        answers_graphs[f"questions_{question_id}"] = create_one_answers_graph(filtered_df, question_id, content)
     return answers_graphs
 
 
