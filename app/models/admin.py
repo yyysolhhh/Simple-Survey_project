@@ -10,3 +10,7 @@ class Admin(BaseModel, Model):
 
     class Meta:
         table = "admins"
+
+    @classmethod
+    def get_admin(cls, username: str):
+        return cls.filter(username=username).first()
