@@ -5,7 +5,6 @@ from fastapi.responses import HTMLResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.templating import Jinja2Templates
 from tortoise.backends.base.client import BaseDBAsyncClient
-from werkzeug.security import check_password_hash
 
 from app.configs.constants import TEMPLATES
 from app.configs.database_settings import connect_db

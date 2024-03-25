@@ -1614,24 +1614,7 @@ files = [
     {file = "wcwidth-0.2.13.tar.gz", hash = "sha256:72ea0c06399eb286d978fdedb6923a9eb47e1c486ce63e9b4e64fc18303972b5"},
 ]
 
-[[package]]
-name = "werkzeug"
-version = "3.0.1"
-description = "The comprehensive WSGI web application library."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "werkzeug-3.0.1-py3-none-any.whl", hash = "sha256:90a285dc0e42ad56b34e696398b8122ee4c681833fb35b8334a095d82c56da10"},
-    {file = "werkzeug-3.0.1.tar.gz", hash = "sha256:507e811ecea72b18a404947aded4b3390e1db8f826b494d76550ef45bb3b1dcc"},
-]
-
-[package.dependencies]
-MarkupSafe = ">=2.1.1"
-
-[package.extras]
-watchdog = ["watchdog (>=2.3)"]
-
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "4ded544f46cfbf89bc97b76c4cf1fd9a39d1b1ab374401e441198ce0ef42e35c"
+content-hash = "7195df379bfcd6c4ae74a1dbab30762abdd083a26b8f2c2a2bccd1ccbf1d9707"
