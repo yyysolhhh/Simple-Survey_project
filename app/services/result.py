@@ -19,11 +19,7 @@ async def extract_participants_to_dataframe() -> pd.DataFrame:
 async def extract_answers_to_dataframe() -> pd.DataFrame:
     answers_list = await Answer.get_answers_join_questions()
     answers_data = [
-        {
-            "question_id": answer.question.id,
-            "choice": answer.choice,
-            "question_content": answer.question.content
-        }
+        {"question_id": answer.question.id, "choice": answer.choice, "question_content": answer.question.content}
         for answer in answers_list
     ]
     answers_df = pd.DataFrame(answers_data)
@@ -38,7 +34,6 @@ def create_age_distribution_graph(participants_df: pd.DataFrame) -> Figure:
         hole=0.3,
         labels={"age": "Age"},
         color_discrete_sequence=px.colors.qualitative.T10,
-        # color_discrete_sequence=px.colors.sequential.Agsunset,
     )
 
 
@@ -50,8 +45,6 @@ def create_gender_distribution_graph(participants_df: pd.DataFrame) -> Figure:
         hole=0.3,
         labels={"gender": "Gender"},
         color_discrete_sequence=px.colors.qualitative.T10,
-        # color_discrete_sequence=px.colors.sequential.Plasma_r,
-        # color_discrete_sequence=px.colors.sequential.Agsunset,
     )
 
 
@@ -62,9 +55,7 @@ def create_one_answers_graph(answers_df: pd.DataFrame, number: int, content: str
         title=f"Q{number} {content}",
         hole=0.3,
         labels={"choice": "Choice"},
-        color_discrete_map={"yes": "#4C78A8", "no": "#E45756"}
-        # color_discrete_sequence=px.colors.qualitative.T10,
-        # color_discrete_sequence=px.colors.sequential.Plasma_r,
+        color_discrete_map={"yes": "#4C78A8", "no": "#E45756"},
     )
     return fig
 
