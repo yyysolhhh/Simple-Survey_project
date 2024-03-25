@@ -22,6 +22,8 @@ pandas = "^2.2.1"
 ipython = "^8.22.2"
 pandas-stubs = "^2.2.1.240316"
 werkzeug = "^3.0.1"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 
 
 [tool.poetry.group.dev.dependencies]
