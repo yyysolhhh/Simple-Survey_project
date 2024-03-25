@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 from tortoise import fields
 from tortoise.backends.base.client import BaseDBAsyncClient
 from tortoise.models import Model
@@ -11,12 +13,12 @@ from app.models.question import Question
 
 class Answer(BaseModel, Model):
     participant: fields.ForeignKeyRelation[Participant] = fields.ForeignKeyField(
-        "models.Participant", related_name="answers", db_constraint=False
+        "models.Participant", related_name="answers", db_constraint=True
     )
     question: fields.ForeignKeyRelation[Question] = fields.ForeignKeyField(
-        "models.Question", related_name="answers", db_constraint=False
+        "models.Question", related_name="answers", db_constraint=True
     )
-    choice = fields.BooleanField()
+    choice = fields.CharField(max_length=5)
 
     class Meta:
         table = "answers"
@@ -35,3 +37,7 @@ class Answer(BaseModel, Model):
     # @classmethod
     # async def get_participant_age(cls) -> int:
     #     participant_age = await cls.participant_id.age
+
+    @classmethod
+    async def get_answers_join_questions(cls) -> list[Answer]:
+        return await cls.filter().select_related("question").all()

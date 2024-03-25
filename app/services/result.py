@@ -19,8 +19,8 @@ async def extract_participants_to_dataframe() -> pd.DataFrame:
 
 
 async def extract_answers_to_dataframe():
-    answers_list = await Answer.get_all_answers()
-    print(answers_list)
+    answers_list = await Answer.get_answers_join_questions()
+    # print(answers_list[0].question.content)
     answers_data = [
         {
             "question_id": answer.question.id,
@@ -58,11 +58,11 @@ def create_gender_distribution_graph(participants_df: pd.DataFrame) -> Figure:
 
 
 def create_one_answers_graph(answers_df: Series, number: int) -> Figure:
-    print(answers_df)
+    # print(answers_df)
     fig = px.pie(
         answers_df,
         names="choice",
-        values="choice",
+        # values="choice",
         title=f"Question{number}",
         hole=0.3,
         labels={"choice": "Choice"},

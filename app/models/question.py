@@ -7,7 +7,7 @@ from app.models.base_model import BaseModel
 
 
 class Question(BaseModel, Model):
-    order = fields.IntField()
+    order = fields.IntField(default=0)
     is_active = fields.BooleanField(default=True)
     content = fields.TextField()
 
